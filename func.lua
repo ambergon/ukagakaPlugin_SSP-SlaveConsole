@@ -18,6 +18,7 @@
 
 -- -- 設定スペース
 -- 特定の条件を満たした場合のみnil以外を返す。
+-- \はエスケープする必要があります。
 function Filter_Sample( sakuraScript )
     local filter    = ""
     local title     = ""
@@ -29,36 +30,6 @@ function Filter_Sample( sakuraScript )
     end
     return nil , nil , nil , false
 end
-
-
--- \はエスケープする必要がある。
--- sjisを直接書けば文字化けはしない。
-function Filter_Choise( sakuraScript )
-    local filter = "\\q"
-    local title     = "notification"
-    local msg       = "choise"
-    local cmd       = ""
-    local breakFlag = true
-    if not ( filter == "" ) and not ( string.match( sakuraScript , filter ) == nil ) then
-        return title , msg , cmd , breakFlag
-    end
-    return nil , nil , nil , false
-end
-
-
-function Filter_Link( sakuraScript )
-    local filter = "\\_a"
-    local title     = "notification"
-    local msg       = "link"
-    local cmd       = ""
-    local breakFlag = true
-    if not ( filter == "" ) and not ( string.match( sakuraScript , filter ) == nil ) then
-        return title , msg , cmd , breakFlag
-    end
-    return nil , nil , nil , false
-end
-
-
 
 
 
